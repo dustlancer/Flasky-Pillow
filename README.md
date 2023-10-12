@@ -2,7 +2,7 @@
 ## Установка и запуск
 
 1. Клонируйте репозиторий  
- ```git clone <ссылка_на_репозиторий> ```
+ ```git clone https://github.com/dustlancer/Flasky-Pillow.git ```
  
 2. Перейдите в директорию проекта  
  ```cd Flasky-Pillow ```
