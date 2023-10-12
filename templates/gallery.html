@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+<style>
+    .samesize {
+        float: left;
+        width:  110px;
+        height: 110px;
+        object-fit: cover;
+    }
+
+
+    .fix-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -moz-transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        transform: translateX(-50%) translateY(-50%);
+    }
+    
+    .centered-element {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }   
+
+    #inner {
+        display: table;
+        margin: 0 auto;
+        //border: 1px solid black;
+    }
+
+    #outer {
+        //border: 1px solid red;
+        width:100%
+    }
+
+</style>
+
+
+<div class="text-center m-2 animate-bottom">
+    
+
+        <div>
+            <div class="container">
+                {% for picture in gallery %}
+                    <div class="row pt-2">
+                        <div class="col-sm">
+                        <div class="row border">
+                            <img src="{{ url_for('static', filename='data/{user}/{pic}'.format(user=picture['user_name'], pic=picture['file_name'])) }}" width="150" alt="..." class="img-thumbnail m-1 samesize">
+                            <div class="col pt-3">
+                                <div class="fix-container" id="outer">
+                                   <!-- 
+                                     {% if picture['file_name']|length < 24 %}
+                                        <h5>🖼{{ picture['file_name'] }}</h5>
+                                    {% else %}
+                                        <h6>🖼{{ picture['file_name'] }}</h6>
+                                    {% endif %}
+                                   -->
+                                    <p></p>
+                                    <div class="row" id="inner">
+                                        <button class="btn btn-info mb-2 mx-2"><a href="{{'/open_in_editor/{p}'.format(p=picture['file_name'])}}">✏️</a></button>
+
+                                        
+
+                                        <button type="button" class="btn btn-success mb-2 mx-2"><a href="{{ 'download/{u}/{p}'.format(u=picture['user_name'], p=picture['file_name']) }}">⬇️</a></button>
+
+                                        <!--
+                                        <button class="btn btn-danger mb-2 mx-2"><a href="{{'/delete_from_gallery/{p}'.format(p=picture['file_name'])}}">🗑</a></button>
+                                        -->
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        </div>
+                    
+                        
+                    </div>
+
+
+                {% endfor %}
+              </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

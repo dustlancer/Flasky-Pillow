@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS pictures(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    file_name TEXT,
+    user_name TEXT,
+    user_id REFERENCES users(id)
+)

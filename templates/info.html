@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+
+    <img src="{{ url_for('static', filename='images/dog_avatar_1.jpg') }}" width="500" alt="..." class="img-thumbnail m-1">
+    <div class="container"></div>
+
+
+            <style>
+                a {
+                    color: #000000;
+                    text-decoration: none;
+                }
+                .gh:hover {
+                    color: #f04141;
+                    text-decoration: none;
+                }
+                .ig:hover {
+                    color: #ff61f2;
+                    text-decoration: none;
+                }
+                .vk:hover {
+                    color: #000cf5;
+                    text-decoration: none;
+                }
+            </style>
+
+            {% for contact in contacts %}
+                <div class="row">
+                    <div class="col">
+                            <a href="{{contact['url']}}" target=”_blank”>
+                            <h3 class="mt-2 {{contact['class']}}"><img src="{{url_for('static', filename='icons/'+contact['icon'])}}" width="30">
+                            dustlancer
+                            </h3>
+                            </a>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+    </div>
+
+
+    
+
+ 
+
+{% endblock %}

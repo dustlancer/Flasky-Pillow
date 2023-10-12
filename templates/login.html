@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+<div class="text-center m-3 animate-bottom">
+
+    <style>
+        a {
+            color: #3532ff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #f04141;
+            text-decoration: none;
+        }
+    </style>
+
+
+    <h1 class="">Авторизация</h1>
+
+
+    <form action="/login" method="post" class="px-5 pt-2">
+        <!-- Email input -->
+        <div class="form-outline mb-2">
+          <input type="text" name="name" class="form-control" />
+          <label class="form-label" for="form2Example1">Имя пользователя</label>
+        </div>
+      
+        <!-- Password input -->
+        <div class="form-outline mb-2">
+          <input type="password" name="password" class="form-control" />
+          <label class="form-label" for="form2Example2">Пароль</label>
+        </div>
+
+        <!-- <div class="col d-flex justify-content-center mb-3">
+            
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" name="remainme" checked />
+              <label class="form-check-label" for="form2Example31"> Remember me </label>
+            </div>
+        </div>
+      
+        -->
+      
+        <!-- Submit button -->
+        <input type="submit" class="btn btn-primary btn-block mb-4" value="Войти"></input>
+
+      
+        <!-- Register buttons -->
+        <div class="text-center">
+          <p>Нет аккаунта? <a href="{{url_for('register')}}">Регистрация</a></p>
+          
+        </div>
+    </form>
+
+    
+
+ 
+</div>
+{% endblock %}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/loader.css')}}"></link>
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>FlaskyPillow</title>
+    {% endif %}
+
+    <link rel="icon" type="image/ico" href="/static/icons/static/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/icons/apple-touch-icon-120x120.png">
+
+    <!-- Используя CSS отключаем стили ссылок-->
+    <style>
+        a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
+  </head>
+    {% if display_loader %}
+    <body onload="myFunction({{display_loader}})" class="pt-5 ">
+    {% else %}
+    
+    <body class="pt-5">
+    {% endif %}
+    <div style="display: none;" class="loader-wrapper" id="loader-wrapper">
+        <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    
+
+
+
+
+    
+  
+
+        {%- block mainmenu %}
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light navbar-fixed-top bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <h3 class="mt-2">{{title}}</h3>
+            <a class="navbar-brand" href="{{url_for('upload_new_image')}}">➕</a>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                {% for i in menu %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{i['url']}}">{{ i['title'] }}</a>
+                </li>
+                {% endfor %}
+
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('logout')}}">Выйти</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url_for('login')}}">Войти</a>
+                    </li>
+                {% endif %}
+
+            
+            
+        </nav>
+
+        
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} m-3" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+
+            
+        {% endblock %}
+    <div class="text-center m-3 animate-bottom" id="hidden-div">
+  
+    {% block content %}
+    
+
+        
+    {% endblock %}
+    </div>
+
+    
+    
+    
+    <script>
+        var myVar;
+
+    function myFunction(time) {
+        document.getElementById("hidden-div").style.display = "none";
+        document.getElementById("loader-wrapper").style.display = "flex";
+        
+        myVar = setTimeout(showPage, time);
+    }
+
+    function showPage() {
+        document.getElementById("loader-wrapper").style.display = "none";
+        document.getElementById("hidden-div").style.display = "block";
+    }
+    </script>
+
+
+    <!--
+    <script type="text/javascript">  
+        $(window).on('load', function(){  
+            document.getElementById("loader-wrapper").fadeOut(5000);  
+        });
+    </script>  
+-->
+
+
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</body>
+</html>
