@@ -378,7 +378,8 @@ def close_db(error):
 
 
 if __name__ == '__main__':
-    
+    if not os.path.exists(os.path.join(os.getcwd(), "db.db")):
+        create_db()
     
     app.run(debug=True, port=5001)
 
