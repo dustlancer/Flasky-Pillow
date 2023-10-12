@@ -1,5 +1,5 @@
+.DS_Store
 env/
 db.db
 __pycache__/
 2db.db
-.DS_Store
