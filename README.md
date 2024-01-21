@@ -1,6 +1,6 @@
 # Flasky-Pillow
 
-### Опробовать онлайн: https://t.ly/-SWMN
+### Опробовать онлайн: [https://t.ly/-SWMN](https://shorturl.at/hiAB7)
 ## Установка и запуск
 
 1. Клонируйте репозиторий  
